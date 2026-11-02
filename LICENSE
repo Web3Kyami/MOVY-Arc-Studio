@@ -1,0 +1,104 @@
+MIT License
+
+Copyright (c) 2026 MOVY contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---------------------------------------------------------------------------
+THIRD-PARTY CODE NOTICED UNDER THE SAME TERMS
+---------------------------------------------------------------------------
+
+This project is adapted from two MIT-licensed projects. Their copyright and
+permission notices are reproduced verbatim below and are retained in this
+distribution as required by their licenses.
+
+1. shadcn-fintech — https://github.com/abderrahimghazali/shadcn-fintech
+   Pinned commit e338240d10c908ab49403adbcd0bb4cc980ebfce (18 May 2026).
+   Retained: the Next.js App Router shell and route patterns, the Tailwind v4
+   theme layer, and the shadcn/ui primitive set in `src/components/ui/`.
+   A verbatim copy of the upstream LICENSE is also kept at
+   LICENSE-UPSTREAM-shadcn-fintech.txt.
+
+   MIT License
+
+   Copyright (c) 2026 Abderrahim Ghazali
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+2. FinKit UI — https://github.com/amirito/finkit-ui
+   Pinned commit e52bbc981ac8f78264aa41ae52b6a195b705cd40 (2 May 2026).
+   Adapted, not vendored: no FinKit file is copied verbatim. Component structure
+   from `HeroBalanceCard.tsx`, `TransactionRow.tsx` and
+   `TransactionDetailDrawer.tsx` was rewritten into MOVY conventions, MOVY design
+   tokens, and MOVY's integer-cents money module. Every adapted file carries a
+   header naming its origin path and pinned commit. FinKit's `FinKitProvider`,
+   `theme.css`, `formatters.ts` and `Progress.tsx` were not used at all.
+
+   MIT License
+
+   Copyright (c) 2024 Fintech-Kit
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+---------------------------------------------------------------------------
+NOTICES FOR CODE THAT IS NOT MIT
+---------------------------------------------------------------------------
+
+- shadcn/ui primitives and the `@base-ui/react` runtime are used as dependencies
+  and retain their own upstream licenses.
+- The Geist and Geist Mono font families are used via `next/font/google` under
+  the SIL Open Font License 1.1. No font files are vendored into this repository.
+- MOVY ships no third-party images. The upstream shadcn-fintech `public/`
+  directory contained 52 trademark logos and 10 photographs of identifiable
+  people; none of those 55 files were copied, and MOVY's `public/` contains no
+  binary assets. Demo Store marks are original inline SVG. See NOTICE.md.
+- MOVY is not affiliated with, endorsed by, or sponsored by Circle or the Arc
+  Foundation. Arc is used as a network, and the relationship is described factually.

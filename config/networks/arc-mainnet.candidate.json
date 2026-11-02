@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "network": "arc-mainnet",
+  "status": "candidate-unverified",
+  "chainId": 5042,
+  "rpcUrl": "https://rpc.mainnet.arc.io",
+  "explorerUrl": "https://explorer.arc.io",
+  "usdcAddress": "0x3600000000000000000000000000000000000000",
+  "feePolicy": {
+    "minBaseFeePerGasWei": "20000000000",
+    "maxFeePerGasWei": "30000000000",
+    "priorityFeePerGasWei": "1000000000",
+    "maxTransactionFeeWei": "50000000000000000"
+  },
+  "contracts": {
+    "autoSaver": {
+      "address": "0xdFC85c553E651Ce4B8F2daF4915f205CdbEA5525",
+      "deployBlock": 26036017,
+      "transactionHash": "0x8bd5336adae01348a6d4c3fd89090cc7fd7d599bd9873ec64d0e5be840120f1c",
+      "runtimeCodeHash": "0x2ebb521ad82e66ae297cbcfdc502d772fa25b4f72920dd534de13b93c9946206",
+      "roles": {
+        "owner": "0x9912c7891DB559aa0A6f3752F1738916Ff35bF95",
+        "relayer": "0xA6cB77f9ADCC1425A6eb329aE19D727bE1E2E926",
+        "verified": false
+      }
+    },
+    "savingsVault": {
+      "address": "0xFc194011A769e90D93B51Dd9507d69dfc4681164",
+      "deployBlock": 26036021,
+      "transactionHash": "0x135c0543f9f0bb33682c1b7f2a8c204cbbe768db892e4a57fe7f2d9daf40c826",
+      "runtimeCodeHash": "0xe73595480a7bb9a97fff2eae06be5a421130c01aeff0dfb5b6e5b546ddbcff83"
+    }
+  },
+  "verification": {
+    "ownerApproved": false,
+    "approvedBy": "",
+    "approvedAt": "",
+    "evidenceUrls": [
+      "https://rpc.mainnet.arc.io",
+      "https://rpc.blockdaemon.mainnet.arc.io",
+      "https://docs.arc.io/arc/references/gas-and-fees"
+    ],
+    "observedRpcChainId": 5042,
+    "observedBlock": "29086851",
+    "observedGasPriceWei": "20053502491",
+    "observedAt": "2026-11-02T02:28:25.270Z"
+  },
+  "_candidateNotes": [
+    "Candidate evidence only. It is not loaded by the production build or runtime. Owner approval and custody verification remain false.",
+    "AutoSaver matches the committed source at 2ad8a17 but differs from the current allowance-view pause fix. Deploy the current source before choosing a release address.",
+    "Savings Vault matches current source. Both receipts returned status 1 on the official provider in the later observation; the independent provider returned null receipts. Null is missing evidence, not a failed transaction.",
+    "Runtime code and deployment gas estimates agree across both providers. The official explorer could not be accessed from this executor.",
+    "Gas estimates are read-only snapshots, not signed transactions or guaranteed future fees. Re-estimate after confirming production addresses and immediately before signing.",
+    "Final approval applies to a complete current manifest after deployment, source/runtime correspondence, roles and receipt checks. It is distinct from the approved fee policy.",
+    "The owner confirmed access only to the existing owner wallet. The historical relayer is unavailable and must not be used for the new deployment. New constructor calldata and gas estimates must follow the confirmed new relayer address.",
+    "A dedicated production relayer was created as an encrypted local keystore with separate explicit owner approval. It remains unfunded and inactive. Historical on-chain roles above are unchanged observations."
+  ],
+  "sourceVerification": {
+    "autoSaver": {
+      "sourceSha256": "d32c723aa97c87d1c2284193394f1302f439d2c7d95703182676fe46983908c3",
+      "observedRuntimeBytes": 5706,
+      "expectedRuntimeBytes": 5734,
+      "observedRuntimeCodeHash": "0x2ebb521ad82e66ae297cbcfdc502d772fa25b4f72920dd534de13b93c9946206",
+      "expectedRuntimeCodeHash": "0xbcc96066def2f5f9764dab9eebb4616bae441cb4739e29af4c83c7be7fd45eb8",
+      "matchesCurrentSource": false
+    },
+    "savingsVault": {
+      "sourceSha256": "f89ca2a3e873a1361ebd048e1eb3fb25c83495b9dd027dfde3d3032a4d7a3726",
+      "observedRuntimeBytes": 1584,
+      "expectedRuntimeBytes": 1584,
+      "observedRuntimeCodeHash": "0xe73595480a7bb9a97fff2eae06be5a421130c01aeff0dfb5b6e5b546ddbcff83",
+      "expectedRuntimeCodeHash": "0xe73595480a7bb9a97fff2eae06be5a421130c01aeff0dfb5b6e5b546ddbcff83",
+      "matchesCurrentSource": true
+    }
+  },
+  "receiptObservations": [
+    {
+      "provider": "https://rpc.mainnet.arc.io",
+      "autoSaver": {
+        "status": 1,
+        "blockNumber": "26036017",
+        "contractAddress": "0xdfc85c553e651ce4b8f2daf4915f205cdbea5525",
+        "gasUsed": "1357886"
+      },
+      "savingsVault": {
+        "status": 1,
+        "blockNumber": "26036021",
+        "contractAddress": "0xfc194011a769e90d93b51dd9507d69dfc4681164",
+        "gasUsed": "417909"
+      }
+    },
+    {
+      "provider": "https://rpc.blockdaemon.mainnet.arc.io",
+      "autoSaver": null,
+      "savingsVault": null
+    }
+  ],
+  "deploymentPlan": {
+    "autoSaver": "deploy-current-source-after-specific-transaction-approval",
+    "savingsVault": "reuse-matching-existing-deployment",
+    "autoSaverEstimate": {
+      "gas": "1375935",
+      "bufferedGas": "1651122",
+      "maxFeeWei": "49533660000000000",
+      "maxFeeUsdc": "0.04953366",
+      "withinApprovedTransactionCeiling": true,
+      "signerAddressIsProposedOnly": true
+    },
+    "sourceFreezeRequiredBeforeSigning": true,
+    "productionSignerCustodyConfirmed": true,
+    "deploymentApproved": true,
+    "ownerAccessConfirmed": true,
+    "proposedOwner": "0x9912c7891DB559aa0A6f3752F1738916Ff35bF95",
+    "proposedRelayer": "0xC65E9302a4010818fA73505dEcDe3418d48a42f5",
+    "existingRelayerAccessConfirmed": false,
+    "productionWalletsComplete": true,
+    "blockedOn": [
+      "isolated-mainnet-build-and-app-review"
+    ],
+    "relayerKeyCreatedWithOwnerApproval": true,
+    "relayerEnabled": false,
+    "relayerFunded": false,
+    "estimatedWithRelayer": "0xC65E9302a4010818fA73505dEcDe3418d48a42f5",
+    "estimateObservedAt": "2026-11-02T02:28:25.270Z",
+    "releaseSourceLock": "config/networks/arc-mainnet.source-lock.json",
+    "deploymentTransactionHash": "0x4c1f8c9f29754bb046f49fbb0a9606263f7b4b1f4f990d8ee725b166b302354c",
+    "deployedAddress": "0x98ab14da8f6e68add0cdfeb75bdc4c2ea9044539"
+  },
+  "feePolicyAuthorization": {
+    "owner": "Kyami",
+    "recordedAt": "2026-11-02T02:12:03.648597+00:00",
+    "scope": "Initial Mainnet pilot fee limits delegated in this session; no deployment or transaction authorization"
+  },
+  "studioProvenance": {
+    "projectUrl": "https://studio.arc.io/app/303b83d4-ba20-46ff-a3de-93e5f83d73a8",
+    "threadId": "7be0b85a-9050-4665-84c3-0f65ee4db6e6",
+    "traceId": "01a199fa-a23c-75af-818b-21fa900c5106",
+    "contributions": [
+      "Mainnet fee policy and floor enforcement",
+      "Ten Solidity readiness tests",
+      "Candidate evidence and deployment preparation review"
+    ],
+    "sourceLockTraceId": "01a19a11-591c-775f-aa4f-04e0f925bf0a"
+  }
+}

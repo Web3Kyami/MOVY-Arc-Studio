@@ -1,0 +1,15 @@
+{
+  "framework": "nextjs",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "git": {
+    "deploymentEnabled": {
+      "audit/movy-full-stack-certification": false
+    }
+  },
+  "functions": {
+    "src/app/api/worker/tick/route.ts": { "maxDuration": 60 },
+    "src/app/api/worker/cron/route.ts": { "maxDuration": 60 },
+    "src/app/api/health/route.ts": { "maxDuration": 10 }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 2,
+  "network": "arc-mainnet",
+  "status": "owner-verified",
+  "chainId": 5042,
+  "rpcUrl": "https://rpc.mainnet.arc.io",
+  "explorerUrl": "https://explorer.arc.io",
+  "usdcAddress": "0x3600000000000000000000000000000000000000",
+  "feePolicy": {
+    "minBaseFeePerGasWei": "20000000000",
+    "maxFeePerGasWei": "30000000000",
+    "priorityFeePerGasWei": "1000000000",
+    "maxTransactionFeeWei": "50000000000000000"
+  },
+  "contracts": {
+    "autoSaver": {
+      "address": "0x98ab14da8f6e68add0cdfeb75bdc4c2ea9044539",
+      "deployBlock": 29090033,
+      "transactionHash": "0x4c1f8c9f29754bb046f49fbb0a9606263f7b4b1f4f990d8ee725b166b302354c",
+      "runtimeCodeHash": "0xbcc96066def2f5f9764dab9eebb4616bae441cb4739e29af4c83c7be7fd45eb8",
+      "roles": {
+        "owner": "0x9912c7891db559aa0a6f3752f1738916ff35bf95",
+        "relayer": "0xc65e9302a4010818fa73505decde3418d48a42f5",
+        "verified": true
+      }
+    },
+    "savingsVault": {
+      "address": "0xFc194011A769e90D93B51Dd9507d69dfc4681164",
+      "deployBlock": 26036021,
+      "transactionHash": "0x135c0543f9f0bb33682c1b7f2a8c204cbbe768db892e4a57fe7f2d9daf40c826",
+      "runtimeCodeHash": "0xe73595480a7bb9a97fff2eae06be5a421130c01aeff0dfb5b6e5b546ddbcff83"
+    }
+  },
+  "verification": {
+    "ownerApproved": true,
+    "approvedBy": "Kyami (explicit Mainnet deployment approval and owner-wallet signature)",
+    "approvedAt": "2026-11-02T02:55:13.687Z",
+    "evidenceUrls": [
+      "https://explorer.arc.io/tx/0x4c1f8c9f29754bb046f49fbb0a9606263f7b4b1f4f990d8ee725b166b302354c",
+      "https://explorer.arc.io/address/0x98ab14da8f6e68add0cdfeb75bdc4c2ea9044539",
+      "https://rpc.mainnet.arc.io",
+      "https://rpc.blockdaemon.mainnet.arc.io"
+    ],
+    "observedRpcChainId": 5042,
+    "observedBlock": "29090926",
+    "observedGasPriceWei": "20329189446",
+    "observedAt": "2026-11-02T03:02:51.421Z"
+  }
+}

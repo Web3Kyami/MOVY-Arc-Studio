@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "chainId": 5042,
+  "usdcAddress": "0x3600000000000000000000000000000000000000",
+  "foundryConfigSha256": "33932f0cacf0ce3071bdf6b88cb03864f26ee86c48e49558ef7b77f18a528b2e",
+  "contracts": {
+    "autoSaver": {
+      "sourcePath": "contracts/src/MovyAutoSaver.sol",
+      "sourceSha256": "d32c723aa97c87d1c2284193394f1302f439d2c7d95703182676fe46983908c3",
+      "runtimeCodeHash": "0xbcc96066def2f5f9764dab9eebb4616bae441cb4739e29af4c83c7be7fd45eb8",
+      "runtimeBytes": 5734
+    },
+    "savingsVault": {
+      "sourcePath": "contracts/src/MovySavings.sol",
+      "sourceSha256": "f89ca2a3e873a1361ebd048e1eb3fb25c83495b9dd027dfde3d3032a4d7a3726",
+      "runtimeCodeHash": "0xe73595480a7bb9a97fff2eae06be5a421130c01aeff0dfb5b6e5b546ddbcff83",
+      "runtimeBytes": 1584
+    }
+  }
+}

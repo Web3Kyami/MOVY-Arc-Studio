@@ -1,0 +1,50 @@
+# Local credentials and environment configuration
+.env
+.env.*
+
+# Vercel linkage and Studio metadata
+.vercel/
+.arc-studio
+
+# Project documentation and internal review notes are not required by the app build
+docs/
+
+# Agent instructions, skills, and private planning material
+AGENTS.md
+DESIGN.md
+CONTEXT.md
+.agents/
+.planning/
+planning/
+references/
+research/
+STATE.md
+*HANDOFF*.md
+*AUDIT*.md
+**/AGENTS.md
+**/.agents/
+**/STATE.md
+**/*HANDOFF*.md
+**/*AUDIT*.md
+docs/*RESEARCH*.md
+docs/audit/
+docs/design/evidence/
+docs/design/references/
+docs/submission/screenshots/
+evidence/
+
+# Local transaction evidence is not part of the deployed application
+docs/evidence/
+docs/LOCAL-ARC-FINANCIAL-CERTIFICATION.md
+
+# Local browser captures and generated build outputs
+connected/
+contracts/out/
+contracts/cache/
+*.tsbuildinfo
+
+# Local browser state and test-only sources are not application build inputs
+.playwright-cli/
+scripts/test-*
+contracts/test/
+contracts/lib/

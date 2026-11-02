@@ -1,0 +1,32 @@
+.hero{position:relative;isolation:isolate;background:#fff;color:#191d1a;overflow:clip;padding:64px max(5vw,24px) 76px;min-height:calc(100svh - 82px);display:flex;align-items:center}
+.composition{width:100%;max-width:1440px;margin:auto;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:3%}
+.copy{position:relative;z-index:1;min-width:0}
+.eyebrow{color:#087f5b;text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:750;margin:0 0 26px}
+.copy h1{font-size:clamp(64px,7vw,108px);font-weight:800;letter-spacing:-.065em;line-height:1.02;margin:0;max-width:760px}
+.copy h1 span{display:block;color:#082e26}
+.deck{font-size:18px;line-height:1.7;color:#535e58;margin:28px 0 30px;max-width:440px}
+.actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.actions button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:0;font-size:14px;font-weight:750;cursor:pointer}
+.primary{color:#082e26;background:#c5f47a;padding:0 24px;border-radius:999px}
+.secondary{color:#082e26;background:transparent;padding:0 2px}
+.actions button:focus-visible{outline:3px solid #087f5b;outline-offset:5px}
+.note{font-size:12px;color:#535e58;margin:19px 0 0}
+.visual{position:relative;min-width:0;aspect-ratio:1.12;display:flex;align-items:center;justify-content:center}
+.plane{position:absolute;inset:9% 3% 8%;border-radius:50% 50% 28% 28%;background:#f2f6f3}
+.sculpture{position:relative;width:122%;max-width:none;height:auto;filter:drop-shadow(0 12px 16px #082e2612)}
+.shell :global(.landing-nav){position:relative;background:#fff}
+@media(min-width:1600px){.hero{padding-top:90px;padding-bottom:90px}}
+@media(max-width:1100px) and (min-width:900px){.copy h1{font-size:64px}.actions{gap:16px}.deck{font-size:16px}.primary{padding:0 19px}}
+@media(max-width:899px){
+ .hero{padding:28px 24px 42px;min-height:calc(100svh - 78px);align-items:flex-start}
+ .composition{grid-template-columns:1fr;gap:22px;max-width:620px}
+ .eyebrow{font-size:11px;margin-bottom:18px}
+ .copy h1{font-size:clamp(42px,12.7vw,72px);line-height:1.04;letter-spacing:-.06em}
+ .deck{font-size:15px;line-height:1.65;margin:20px 0 22px;max-width:380px}
+ .actions{gap:20px}.actions button{min-height:48px;font-size:13px}.primary{padding:0 20px}
+ .note{font-size:11px;margin-top:13px}
+ .visual{aspect-ratio:1.5;max-height:310px;width:100%}.plane{inset:5% 8% 7%}.sculpture{width:104%;max-height:310px;object-fit:contain}
+ .shell :global(.landing-nav nav){display:none}
+}
+@media(max-width:359px){.hero{padding:20px 20px 32px}.copy h1{font-size:40px}.eyebrow{font-size:10px;margin-bottom:14px}.deck{font-size:14px;margin:17px 0 18px}.actions{gap:14px}.actions button{font-size:12px}.primary{padding:0 17px}.visual{aspect-ratio:1.48}.composition{gap:18px}}
+@media(prefers-reduced-motion:reduce){.sculpture{animation:none}}

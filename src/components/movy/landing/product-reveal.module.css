@@ -1,0 +1,158 @@
+.section {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  align-items: center;
+  overflow: hidden;
+  background: #fbfcfb;
+  color: #191d1a;
+  padding: clamp(4.5rem, 7vw, 7rem) max(1.25rem, 6.5vw);
+}
+
+.layout {
+  display: grid;
+  width: min(100%, 78rem);
+  grid-template-columns: minmax(0, 0.96fr) minmax(22rem, 1.04fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7.5rem);
+  margin-inline: auto;
+}
+
+.copy {
+  max-width: 36rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: #087f5b;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrowMark {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #c5f47a;
+  box-shadow: 0 0 0 0.25rem rgb(197 244 122 / 20%);
+}
+
+.heading {
+  max-width: 10ch;
+  margin: 1.35rem 0 1.2rem;
+  color: #191d1a;
+  font-size: clamp(3.25rem, 6vw, 5.35rem);
+  font-weight: 750;
+  letter-spacing: -0.065em;
+  line-height: 0.97;
+  text-wrap: balance;
+}
+
+.support {
+  max-width: 35rem;
+  margin: 0;
+  color: #53605a;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.device {
+  width: min(100%, 23.75rem);
+  margin: 0 auto;
+  justify-self: center;
+}
+
+.frame {
+  border: 1px solid rgb(8 46 38 / 42%);
+  border-radius: 3.25rem;
+  background: linear-gradient(150deg, #29312d 0%, #111613 42%, #222a26 100%);
+  padding: 0.48rem;
+  box-shadow:
+    0 2.5rem 5.5rem rgb(8 46 38 / 18%),
+    0 0.75rem 1.5rem rgb(25 29 26 / 13%),
+    inset 0 1px 0 rgb(255 255 255 / 35%);
+}
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 390 / 844;
+  border-radius: 2.78rem;
+  background: #f8f9f5;
+  isolation: isolate;
+}
+
+.picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.screenImage {
+  object-fit: cover;
+  object-position: top center;
+  user-select: none;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.8rem 0;
+  color: #68736d;
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+
+.caption span:first-child {
+  color: #26322c;
+  font-weight: 700;
+}
+
+@media (max-width: 959px) {
+  .section {
+    min-height: auto;
+    padding: 5.5rem 1rem 5rem;
+  }
+
+  .layout {
+    max-width: 44rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .heading {
+    max-width: 11ch;
+    font-size: clamp(2.8rem, 8vw, 4.7rem);
+  }
+
+  .device {
+    width: min(calc(100vw - 1.5rem), 23.75rem);
+  }
+}
+
+@media (max-width: 359px) {
+  .screen {
+    aspect-ratio: 320 / 568;
+    border-radius: 2.35rem;
+  }
+
+  .frame {
+    border-radius: 2.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .device {
+    transform: none !important;
+    transition: none !important;
+  }
+}

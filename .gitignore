@@ -1,0 +1,79 @@
+# Build output
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Dependencies
+/node_modules
+
+# Foundry
+/contracts/out
+/contracts/cache
+/contracts/broadcast
+
+# Environment. Contains the Demo Store recipient and contract addresses; the
+# contract addresses are public but the file may hold a deployer key.
+.env
+.env*.local
+
+# Local evidence artefacts. The curated evidence set is committed to the
+# documentation repository, not here.
+/evidence
+/artifacts/
+*.log
+/.next-server.log
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+*.db
+*.sqlite
+/data/
+.idea
+.vscode
+
+# Private planning and handoff material. Keep local; never stage with -f.
+/.arc-studio/
+.planning/
+planning/
+references/
+research/
+AGENTS.md
+!/AGENTS.md
+# Repo-local skill support files are intentional source, not private planning notes.
+!.agents/skills/**/references/
+!.agents/skills/**/references/**
+AGENT-INSTRUCTIONS.md
+00-START-HERE.md
+PRODUCT.md
+PRODUCT-THESIS.md
+USER-FLOWS.md
+UX-ARCHITECTURE.md
+PAGE-SPECS.md
+COMPONENT-MAP.md
+ARC-INTEGRATION.md
+CONTRACT-ARCHITECTURE.md
+DATA-MODEL.md
+IMPLEMENTATION.md
+TASKS.md
+TESTING.md
+DEMO-PLAN.md
+RISKS.md
+DECISIONS.md
+STATE.md
+LICENSE-NOTES.md
+DESIGN-SYSTEM.md
+DESIGN.md
+SUBMISSION-REQUIREMENTS.md
+RUNBOOK-MAINNET.md
+*AUDIT*.md
+!.agents/skills/controlled-evidence-verification/references/capability-and-gap-audit.md
+!.agents/skills/controlled-evidence-verification/references/auditing-an-existing-build.md
+*HANDOFF*.md
+.env.*
+!.env.example
+*.pem
+*.key
+.vercel
+.env*
