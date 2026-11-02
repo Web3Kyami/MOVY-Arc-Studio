@@ -1,6 +1,7 @@
 import { defineChain, isAddress } from 'viem'
 import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { assertProductionAutomation } from './automation-policy.mjs'
 import { ARC_MAINNET_RPC_URL, type ArcNetwork } from '../chain'
 // Statically bundled so the deployed runtime needs no Solidity source files. The lock is public
 // source fact (reviewed source hashes and the runtime code hashes they compile to), not approval.
@@ -224,9 +225,7 @@ export function getConfiguredNetwork(env: NodeJS.ProcessEnv = process.env): ArcN
   if (databaseNetwork !== undefined && databaseNetwork !== network) {
     throw new Error('MOVY_DATABASE_NETWORK must match the selected network')
   }
-  if (isProduction && (env.MOVY_RELAYER_ENABLED !== 'false' || env.MOVY_WORKER_ENABLED !== 'false')) {
-    throw new Error('Production financial relayer and worker must remain disabled until separately approved')
-  }
+  if (isProduction && network !== 'mainnet') assertProductionAutomation(env, network)
   if (process.env.NEXT_PUBLIC_MOVY_TARGET_NETWORK !== 'mainnet' && isProduction && network === 'testnet') {
     const deployment = readTestnetDeployment()
     if (
@@ -262,6 +261,7 @@ export function getConfiguredNetwork(env: NodeJS.ProcessEnv = process.env): ArcN
       }
     }
     const manifest = readOwnerVerifiedMainnetManifest()
+    assertProductionAutomation(env, network, manifest.contracts.autoSaver)
     const expected = {
       ARC_MAINNET_RPC_URL: manifest.rpcUrl,
       NEXT_PUBLIC_ARC_MAINNET_RPC_URL: manifest.rpcUrl,

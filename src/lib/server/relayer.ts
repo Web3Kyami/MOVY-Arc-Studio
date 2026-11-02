@@ -7,7 +7,8 @@ import {
 import { calculateRoundup6 } from '../money'
 import { privateKeyToAccount } from 'viem/accounts'
 import { lstatSync } from 'node:fs'
-import { loadFoundryKeystoreAccount } from './foundry-keystore.mjs'
+import { createHash } from 'node:crypto'
+import { decryptFoundryKeystore, loadFoundryKeystoreAccount } from './foundry-keystore.mjs'
 import {
   CHAIN_TESTNET,
   CHAIN_MAINNET,
@@ -172,6 +173,27 @@ function keystoreFingerprint(keystorePath: string, passwordFilePath: string): st
 }
 
 function loadConfiguredKeystoreAccount(): RelayerAccount | null {
+  // Server-only secrets support stateless hosting without exporting a plaintext key.
+  const encryptedJson = process.env.MOVY_RELAYER_KEYSTORE_JSON
+  const password = process.env.MOVY_RELAYER_KEYSTORE_PASSWORD?.replace(/[\r\n]+$/, '')
+  if (encryptedJson !== undefined || password !== undefined) {
+    if (!encryptedJson || !password || encryptedJson.length > 16_384 || password.length > 1024) return null
+    const fingerprint = createHash('sha256').update(encryptedJson).update('\0').update(password).digest('hex')
+    if (cachedKeystoreAccount?.fingerprint === fingerprint) return cachedKeystoreAccount.account
+    try {
+      const account = privateKeyToAccount(decryptFoundryKeystore(encryptedJson, password) as `0x${string}`)
+      const expected = process.env.MOVY_AUTOMATION_APPROVED_RELAYER
+      if (expected && account.address.toLowerCase() !== expected.toLowerCase()) {
+        cachedKeystoreAccount = { fingerprint, account: null }
+        return null
+      }
+      cachedKeystoreAccount = { fingerprint, account }
+      return account
+    } catch {
+      cachedKeystoreAccount = { fingerprint, account: null }
+      return null
+    }
+  }
   const keystorePath = process.env.MOVY_RELAYER_KEYSTORE
   const passwordFilePath = process.env.MOVY_RELAYER_PASSWORD_FILE
   if (!keystorePath || !passwordFilePath) return null
@@ -194,7 +216,12 @@ export function getRelayerAccount(
   privateKey: string | null | undefined = process.env.RELAYER_PRIVATE_KEY
 ) {
   if (privateKey === null) return null
+  const productionMainnet = process.env.NODE_ENV === 'production' &&
+    (process.env.MOVY_TARGET_NETWORK ?? process.env.NEXT_PUBLIC_MOVY_TARGET_NETWORK) === 'mainnet'
+  const expected = process.env.MOVY_AUTOMATION_APPROVED_RELAYER
+  if (productionMainnet && process.env.MOVY_RELAYER_ENABLED === 'true' && !/^0x[0-9a-fA-F]{40}$/.test(expected ?? '')) return null
   if (privateKey) {
+    if (productionMainnet) return null
     if (!/^0x[a-fA-F0-9]{64}$/.test(privateKey)) return null
     try {
       return privateKeyToAccount(privateKey as `0x${string}`)
@@ -202,7 +229,9 @@ export function getRelayerAccount(
       return null
     }
   }
-  return loadConfiguredKeystoreAccount()
+  const account = loadConfiguredKeystoreAccount()
+  if (productionMainnet && expected && account?.address.toLowerCase() !== expected.toLowerCase()) return null
+  return account
 }
 
 export async function processPendingJobs(

@@ -1,3 +1,4 @@
+import { assertProductionAutomation } from '../../src/lib/server/automation-policy.mjs'
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join, resolve } from 'node:path'
@@ -217,8 +218,7 @@ export function assertBuildNetworkPreflight({
   assert(env.NEXT_PUBLIC_MOVY_TARGET_NETWORK === 'mainnet', 'Mainnet-targeted build refused: NEXT_PUBLIC_MOVY_TARGET_NETWORK must be explicitly mainnet')
   assert(env.NEXT_PUBLIC_MOVY_CHAIN_ID === '5042', 'Mainnet-targeted build refused: NEXT_PUBLIC_MOVY_CHAIN_ID must be explicitly 5042')
   assert(env.MOVY_DATABASE_NETWORK === 'mainnet', 'Mainnet-targeted build refused: MOVY_DATABASE_NETWORK must be explicitly mainnet')
-  assert(env.MOVY_WORKER_ENABLED === 'false', 'Mainnet-targeted build refused: MOVY_WORKER_ENABLED must remain false')
-  assert(env.MOVY_RELAYER_ENABLED === 'false', 'Mainnet-targeted build refused: MOVY_RELAYER_ENABLED must remain false')
+  assertProductionAutomation(env, target, manifest.contracts.autoSaver)
   assert(env.MOVY_DEMO_MERCHANT_PAYMENT_ENABLED !== 'true', 'Mainnet-targeted build refused: merchant checkout must remain disabled pending a separate reviewed activation')
 
   for (const key of TESTNET_ENV_KEYS) {

@@ -1,10 +1,10 @@
 # MOVY Mainnet release procedure
 
-**Status: current-source AutoSaver deployed; isolated Mainnet build verified; financial pilot pending.**
+**Current-source AutoSaver is deployed on Arc Mainnet; production automation is enabled only through deployment-bound configuration.**
 The connected app, API, observer, worker, relayer, transaction links, and database
 are now selected per deployment. A process can serve exactly one Arc network;
 database/schema bindings and API chain checks fail closed across networks.
-Mainnet transaction processing is disabled. The verified deployment manifest is
+Mainnet transaction processing requires explicit worker/relayer switches and approval addresses matching the verified contract and relayer. The deployment manifest is
 `config/networks/arc-mainnet.json`. No Mainnet application savings transaction
 has been verified.
 
@@ -198,7 +198,7 @@ decimals.
 
 Set these values only in the separate release-candidate project and its
 Mainnet-only database. All address/deploy-block values must match the reviewed
-manifest. `MOVY_WORKER_ENABLED` and `MOVY_RELAYER_ENABLED` must remain `false`.
+manifest. Keep `MOVY_WORKER_ENABLED` and `MOVY_RELAYER_ENABLED` false during rehearsal. After owner activation approval, set them true together with `MOVY_AUTOMATION_APPROVED_CONTRACT` and `MOVY_AUTOMATION_APPROVED_RELAYER` matching the manifest.
 
 ```text
 MOVY_TARGET_NETWORK=mainnet
@@ -354,3 +354,23 @@ approved HTTPS origins when preparing hosted release configuration.
 Exactly one owner-approved AutoSaver deployment was signed through MetaMask.
 No further Mainnet transaction, production worker activation, relayer funding,
 hosted deployment, GitHub publication or traffic cutover was performed.
+
+## Production automation operation
+
+The production web runtime loads `MOVY_RELAYER_KEYSTORE_JSON` and
+`MOVY_RELAYER_KEYSTORE_PASSWORD` from separate Vercel server secrets. The encrypted
+keystore is decrypted only in server memory and its address must match the
+approved relayer. Local protected keystore files remain supported.
+
+The authenticated `/api/worker/cron` endpoint indexes enrollment, observes
+canonical USDC payments, and processes eligible jobs under the existing database
+lease. It requires a server-only `CRON_SECRET` of at least 32 bytes. The production
+scheduler calls this endpoint every 30 seconds from the deployment operator's
+host. This avoids requiring a paid Vercel scheduling plan; the host must remain
+running. Concurrent cycles are rejected by the database lease.
+
+To stop automation immediately, stop the operator timer. Disable the worker and
+relayer variables and redeploy to keep them off independently of the scheduler.
+User enrollment, allowance, limits, canonical-payment checks, and the 0.05 USDC
+transaction fee ceiling still apply. Activation does not create wallet enrollment
+or a payment on a user's behalf.
